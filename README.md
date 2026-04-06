@@ -71,7 +71,8 @@ This plugin is meant to be studied and removed. When you're ready to build your 
 
 | Repository | Role |
 |------------|------|
-| [examplepress-theme](https://github.com/webmultipliers/examplepress-theme) | Core theme &mdash; single-entry-point router, feature registry, admin dashboard, and Blockstudio integration |
+| [examplepress-theme](https://github.com/webmultipliers/examplepress-theme) | Presentation layer &mdash; single FSE template, router block dispatch, and Blockstudio integration |
+| [examplepress-mu](https://github.com/webmultipliers/examplepress-mu) | MU Kernel &mdash; routing engine, feature registry, admin dashboard, config pipeline, governance, and REST API |
 | [examplepress-theme-app](https://github.com/webmultipliers/examplepress-theme-app) | Template repo for scaffolding new companion plugins |
 | **examplepress-theme-demo** | **This repo** &mdash; reference companion plugin demonstrating the routing contract |
 | [examplepress-theme-update](https://github.com/webmultipliers/examplepress-theme-update) | Dedicated updater &mdash; delivers theme releases via GitHub to the WordPress updater |

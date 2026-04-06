@@ -2,16 +2,18 @@
 /**
  * Plugin Name: ExamplePress Demo
  * Description: Disposable demo companion plugin showing the routing contract, namespace handoff, and template block pattern. Install via the ExamplePress settings page, inspect the source, then scaffold your own.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Requires at least: 6.9
  * Requires PHP: 8.4
  * Author: ExamplePress
- * ExamplePress Demo: true
+ * Theme: examplepress-theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+use ExamplePress\MU\Infrastructure\RouteRegistry;
 
 // ── Route Origin Registration ────────────────────────────────────
 // Register which routes this plugin handles and under what namespace.
@@ -19,11 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 // routes it owns. The router evaluates conditions and picks the first
 // matching origin per request.
 
-if ( function_exists( 'examplepress_register_route_origin' ) ) {
+if ( class_exists( RouteRegistry::class ) ) {
 	$__ep_config   = json_decode( file_get_contents( __DIR__ . '/examplepress.json' ), true ) ?: [];
 	$__ep_priority = (int) ( $__ep_config['routing']['priority'] ?? 10 );
 
-	examplepress_register_route_origin( 'examplepress-demo', [
+	RouteRegistry::register( 'examplepress-demo', [
 		'front'  => fn() => is_front_page() || is_home(),
 		'single' => fn() => is_singular(),
 		'404'    => fn() => is_404(),
@@ -34,7 +36,7 @@ if ( function_exists( 'examplepress_register_route_origin' ) ) {
 
 // ── Route Data Enrichment ─────────────────────────────────────────
 
-add_filter( 'examplepress_route_data', function ( $data, $slug ) {
+add_filter( 'examplepress_route_data', function ( $data, $slug, $block_name ) {
 	$data['demo'] = true;
 
 	if ( in_array( $slug, [ 'single' ], true ) ) {
@@ -42,7 +44,7 @@ add_filter( 'examplepress_route_data', function ( $data, $slug ) {
 	}
 
 	return $data;
-}, 10, 2 );
+}, 10, 3 );
 
 // ── Blockstudio Init ──────────────────────────────────────────────
 

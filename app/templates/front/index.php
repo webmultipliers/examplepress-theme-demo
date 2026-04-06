@@ -8,11 +8,13 @@
  * @package ExamplePress Demo
  */
 
-$resolved  = examplepress_resolve_route();
+use ExamplePress\MU\Infrastructure\Router;
+
+$resolved  = Router::resolveRoute();
 $namespace = $resolved['namespace'];
 $route     = $resolved['slug'];
-$prefix    = examplepress_get_template_prefix();
-$block     = examplepress_get_template_block_name( $route, $prefix, $namespace );
+$prefix    = Router::templatePrefix();
+$block     = Router::templateBlockName( $route, $prefix, $namespace );
 ?>
 
 <main useBlockProps class="ep-demo">
