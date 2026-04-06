@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ExamplePress Demo
  * Description: Disposable demo companion plugin showing the routing contract, namespace handoff, and template block pattern. Install via the ExamplePress settings page, inspect the source, then scaffold your own.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Requires at least: 6.9
  * Requires PHP: 8.4
  * Author: ExamplePress
