@@ -38,7 +38,7 @@ jobs:
 
     env:
       APP_JSON_PATH: "${{ vars.APP_JSON_PATH || 'examplepress.json' }}"
-      ENTRY_FILE:    "${{ vars.ENTRY_FILE || 'examplepress-theme-update.php' }}"
+      ENTRY_FILE:    "${{ vars.ENTRY_FILE || 'examplepress-demo.php' }}"
 
     steps:
       - name: Checkout PR branch
@@ -115,7 +115,7 @@ jobs:
 
     env:
       APP_JSON_PATH: "${{ vars.APP_JSON_PATH || 'examplepress.json' }}"
-      ENTRY_FILE:    "${{ vars.ENTRY_FILE || 'examplepress-theme-update.php' }}"
+      ENTRY_FILE:    "${{ vars.ENTRY_FILE || 'examplepress-demo.php' }}"
 
     outputs:
       version:       ${{ steps.version.outputs.version }}
